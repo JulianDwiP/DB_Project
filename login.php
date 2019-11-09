@@ -1,5 +1,6 @@
 <?php
 require_once 'include/db_function.php';
+include 'include/Config.php';
 $db = new db_function;
 
 $response = array("error" => FALSE);
@@ -11,10 +12,11 @@ if(isset($_POST['email'])&& isset($_POST['password'])){
     $user = $db->getUserbyEmailAndPassword($email, $password);
 
     if ($user != false) {
-        $response["error"] = FALSE;
-        $response["user"]["nama"] = $user["nama"];
-        $response["user"]["email"] = $user["email"];
-        echo json_encode($response);
+        $sql = "select * from tbl_user where email = '$email'";
+        $data = mysqli_query($con,$sql);
+
+        $result = mysqli_fetch_assoc($data);
+        echo json_encode($result);
     } else {
         $response["error"] = TRUE;
         $response["error_msg"] = "Login gagal. Password/Email salah";

@@ -3,7 +3,7 @@
 require_once 'include/Config.php';
 
 $kategori = $_POST['kategori'];
-$sql = "SELECT * from buku where kategori = '$kategori'";
+$sql = "SELECT * from buku where kategori = '$kategori' order by peringkat Desc";
 $result = mysqli_query($con, $sql);
 
 if($result){

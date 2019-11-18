@@ -1,9 +1,11 @@
 <?php
-    require_once 'include/Config.php';
 
-    $id = $_POST['id_user'];
+require_once 'include/Config.php';
 
-    $get = "SELECT * FROM rakBuku where id_user = '$id' order by peringkat desc";
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+
+    $get = "SELECT * FROM tbl_user where username = '$username' && email = '$email'";
     $result = mysqli_query($con, $get);
 
     if($result){

@@ -46,6 +46,19 @@ class db_function{
             return false;
         }
     }
+    public function verifyAccount($username, $email){
+        $stmt = $this->conn->prepare("SELECT * from tbl_user where username =? and email=? ");
+        $stmt->bind_param("ss", $username, $password);
+        if($stmt->execute()){
+            $user = $stmt->get_result()->fetch_assoc();
+            $stmt->close();
+
+            return $user;
+        }else{
+            return NULL;
+        }
+        
+    }
 
     public function getUserbyEmailAndPassword($email, $password){
         $stmt = $this->conn->prepare("SELECT * FROM tbl_user WHERE email = ?");
@@ -80,6 +93,7 @@ class db_function{
             return false;
         }
     }
+    
 
     public function hashSSHA($password){
         $salt = sha1(rand());

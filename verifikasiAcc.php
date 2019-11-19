@@ -3,21 +3,25 @@ require_once 'include/db_function.php';
 include 'include/Config.php';
 $db = new db_function;
 
+
 $response = array("error" => FALSE);
 
-if(isset($_POST['id'])&& isset($_POST['password'])){
-    $id = $_POST['id'];
-    $password = $_POST['password'];
+if(isset($_POST['username'])&& isset($_POST['email'])){
+    $email = $_POST['email'];
+    $username = $_POST['username'];
 
-    $user = $db->updatePassword($id, $password);
+    $user = $db->verifyAccount($username, $email);
 
-    if ($user != false) {
-        $response["error"] = False;
-        $response["error_msg"] = "Berhasil Mengganti password";
-        echo json_encode($response);
+    if ($user == false) {
+        $sql = "SELECT * from tbl_user where username = '$username' and email = '$email'";
+        $data = mysqli_query($con,$sql);
+
+        $result = mysqli_fetch_assoc($data);
+        echo json_encode($result);
     } else {
         $response["error"] = TRUE;
         $response["error_msg"] = "Login gagal. Password/Email salah";
+        echo mysqli_error($con);
         echo json_encode($response);
     }
 } else {
@@ -25,4 +29,5 @@ if(isset($_POST['id'])&& isset($_POST['password'])){
     $response["error_msg"] = "Parameter (email atau password) ada yang kurang";
     echo json_encode($response);
 }
+
 ?>

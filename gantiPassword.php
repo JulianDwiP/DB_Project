@@ -9,7 +9,7 @@ if(isset($_POST['id'])&& isset($_POST['password'])){
     $id = $_POST['id'];
     $password = $_POST['password'];
 
-    $user = $db->updatePassword($id, $password);
+    $user = $db->gantiPassword($password, $id);
 
     if ($user != false) {
         $response["error"] = False;

@@ -12,12 +12,14 @@ if(isset($_POST['username'])&& isset($_POST['email'])){
 
     $user = $db->verifyAccount($username, $email);
 
-    if ($user == false) {
+    if ($user != false) {
         $sql = "SELECT * from tbl_user where username = '$username' and email = '$email'";
         $data = mysqli_query($con,$sql);
-
+        
         $result = mysqli_fetch_assoc($data);
-        echo json_encode($result);
+        $response["error"] = False;
+        $response["list"] = $result;
+        echo json_encode($response);
     } else {
         $response["error"] = TRUE;
         $response["error_msg"] = "Login gagal. Password/Email salah";

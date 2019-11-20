@@ -30,6 +30,26 @@ class db_function{
             return false;
         }
     }
+    public function gantiPassword($password, $id){
+        $hash = $this->hashSSHA($password);
+        $en_password = $hash["encrypted"];
+        $salt = $hash["salt"];
+        $stmt = $this->conn->prepare("UPDATE tbl_user Set en_password = '$en_password', salt = '$salt' where id = ?");
+        $stmt->bind_param("s", $id);
+        $result = $stmt->execute();
+        $stmt->close();
+
+        if($result){
+            $stmt = $this->conn->prepare("SELECT * FROM tbl_user WHERE id = ?");
+            $stmt->bind_param("s", $id);
+            $stmt->execute();
+            $user = $stmt->get_result()->fetch_assoc();
+            $stmt->close();
+            return $user;
+        }else{
+        return false;
+    }
+}
     public function updateUser($nama, $email, $username){
         $stmt = $this->conn->prepare("UPDATE tbl_user SET nama = '$nama', username = '$username', email = '$email' WHERE email = '$email'");
         $result = $stmt->execute();
@@ -47,8 +67,7 @@ class db_function{
         }
     }
     public function verifyAccount($username, $email){
-        $stmt = $this->conn->prepare("SELECT * from tbl_user where username =? and email=? ");
-        $stmt->bind_param("ss", $username, $password);
+        $stmt = $this->conn->prepare("SELECT * from tbl_user where username ='$username' and email='$email' ");
         if($stmt->execute()){
             $user = $stmt->get_result()->fetch_assoc();
             $stmt->close();

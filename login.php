@@ -14,9 +14,10 @@ if(isset($_POST['email'])&& isset($_POST['password'])){
     if ($user != false) {
         $sql = "select * from tbl_user where email = '$email'";
         $data = mysqli_query($con,$sql);
-
         $result = mysqli_fetch_assoc($data);
-        echo json_encode($result);
+        $response["error"] = FALSE;
+        $response["list"] = $result;
+        echo json_encode($response);
     } else {
         $response["error"] = TRUE;
         $response["error_msg"] = "Login gagal. Password/Email salah";

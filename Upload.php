@@ -15,7 +15,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     }
 
     $path = "uploads/$id.png";
-    $actualpath = "http://192.168.43.143/perpus_db/$path";
+    $actualpath = "http://192.168.43.236/perpus_db/$path";
 
     $sql = "UPDATE tbl_user set image = '$actualpath' where id = '$id'";
 

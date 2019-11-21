@@ -11,9 +11,10 @@ $response = array();
     $peringkat = $_POST['peringkat'];
     $kategori = $_POST['kategori'];
     $id_user = $_POST['id_user'];
+    $id_buku = $_POST['id_buku'];
 
-$insert = "INSERT into rakBuku (nama, deskripsi, author, pdf_icon, pdf_url, peringkat, kategori, id_user)
-values ('$nama', '$deskripsi', '$author', '$pdf_icon', '$pdf_url', $peringkat, '$kategori', '$id_user')";
+$insert = "INSERT into rakBuku (nama, deskripsi, author, pdf_icon, pdf_url, peringkat, kategori, id_user, id_buku)
+values ('$nama', '$deskripsi', '$author', '$pdf_icon', '$pdf_url', $peringkat, '$kategori', '$id_user', '$id_buku')";
 
 $ada = mysqli_num_rows(mysqli_query($con, "SELECT nama from rakBuku where nama = '$nama' and id_user = '$id_user'"));
 

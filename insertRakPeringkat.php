@@ -17,17 +17,8 @@ if($hasil){
             $result = mysqli_fetch_assoc($ambil);
             $result = $result["AVG(dPeringkat)"];
             $formatnum = number_format($result, 1);
-            $masukanKeBuku = "UPDATE buku set peringkat ='$formatnum' where id ='$idBuku'";
+            $masukanKeBuku = "UPDATE rakBuku set peringkat ='$formatnum' where id ='$idBuku'";
             if(mysqli_query($con,$masukanKeBuku)){
-
-                $response["peringkat"] = $formatnum;
-                echo json_encode($response);
-            }else{
-                echo 'error'.mysqli_error($con);
-            }
-            
-            $masukanKeRakBuku = "UPDATE rakbuku set peringkat = '$formatnum' where id_buku='$idBuku'";
-            if(mysqli_query($con, $masukanKeRakBuku)){
                 $response["peringkat"] = $formatnum;
                 echo json_encode($response);
             }else{

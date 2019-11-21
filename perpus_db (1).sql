@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Nov 2019 pada 08.16
+-- Waktu pembuatan: 21 Nov 2019 pada 06.14
 -- Versi server: 10.4.8-MariaDB
 -- Versi PHP: 7.3.11
 
@@ -36,19 +36,20 @@ CREATE TABLE `buku` (
   `pdf_icon` varchar(300) NOT NULL,
   `pdf_url` varchar(300) NOT NULL,
   `peringkat` float NOT NULL,
-  `kategori` varchar(100) NOT NULL
+  `kategori` varchar(100) NOT NULL,
+  `pengunjung` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `buku`
 --
 
-INSERT INTO `buku` (`id`, `nama`, `deskripsi`, `author`, `pdf_icon`, `pdf_url`, `peringkat`, `kategori`) VALUES
-(3, 'android-developer-fundamentals-course-practicals-idn', 'Buku yg mengajarkan semua mengenai pembuatan aplikasi', 'Erlangga', 'pdf-icons/0001.jpg', 'pdf/android-developer-fundamentals-course-practicals-idn.pdf', 4.2, 'Programming'),
-(4, 'Android Programming Language', 'Buku yg mengajarkan semua mengenai pembuatan aplikasi', 'Erlangga', 'pdf-icons/pingu.jpg', 'pdf/11B - Android Studio - Connect Internet (Praktek).pdf', 4, 'Programming'),
-(5, 'Android Developer', 'Buku yg mengajarkan semua mengenai pembuatan aplikasi', 'Erlangga', 'pdf-icons/pingu.jpg', 'pdf/11B - Android Studio - Connect Internet (Praktek).pdf', 4.1, 'Programming'),
-(6, 'CRUD Android Retrofit2', 'Buku yg mengajarkan semua mengenai pembuatan aplikasi', 'Erlangga', 'pdf-icons/pingu.jpg', 'pdf/Tutorial Aplikasi CRUD Android Studio & PHP MySQL.pdf', 4.2, 'Programming'),
-(7, 'Test Aja', 'Buku yg mengajarkan semua mengenai pembuatan aplikasi', 'Erlangga', 'pdf-icons/0001.jpg', 'pdf/Tutorial Aplikasi CRUD Android Studio & PHP MySQL.pdf', 4.1, 'Pendidikan');
+INSERT INTO `buku` (`id`, `nama`, `deskripsi`, `author`, `pdf_icon`, `pdf_url`, `peringkat`, `kategori`, `pengunjung`) VALUES
+(3, 'android-developer-fundamentals-course-practicals-idn', 'Buku yg mengajarkan semua mengenai pembuatan aplikasi', 'Erlangga', 'pdf-icons/pingu.jpg', 'pdf/11B - Android Studio - Connect Internet (Praktek).pdf', 4.3, 'Programming', 8),
+(4, 'Android Programming Language', 'Buku yg mengajarkan semua mengenai pembuatan aplikasi', 'Erlangga', 'pdf-icons/pingu.jpg', 'pdf/11B - Android Studio - Connect Internet (Praktek).pdf', 4.7, 'Programming', 3),
+(5, 'Android Developer', 'Buku yg mengajarkan semua mengenai pembuatan aplikasi', 'Erlangga', 'pdf-icons/pingu.jpg', 'pdf/11B - Android Studio - Connect Internet (Praktek).pdf', 4.7, 'Programming', 3),
+(6, 'CRUD Android Retrofit2', 'Buku yg mengajarkan semua mengenai pembuatan aplikasi', 'Erlangga', 'pdf-icons/pingu.jpg', 'pdf/Tutorial Aplikasi CRUD Android Studio & PHP MySQL.pdf', 4.6, 'Programming', 0),
+(7, 'Test Aja', 'Buku yg mengajarkan semua mengenai pembuatan aplikasi', 'Erlangga', 'pdf-icons/0001.jpg', 'pdf/Tutorial Aplikasi CRUD Android Studio & PHP MySQL.pdf', 4.5, 'Pendidikan', 0);
 
 -- --------------------------------------------------------
 
@@ -87,55 +88,54 @@ CREATE TABLE `peringkat` (
 --
 
 INSERT INTO `peringkat` (`id`, `id_buku`, `dPeringkat`) VALUES
-(6, 4, 4.5),
-(7, 4, 4.5),
-(8, 4, 4.5),
-(10, 4, 3),
-(11, 4, 5),
-(12, 5, 5),
-(13, 5, 5),
-(14, 5, 4),
-(15, 4, 4),
-(20, 4, 4),
-(21, 4, 4),
-(22, 4, 4),
-(23, 4, 5),
-(24, 4, 5),
-(32, 4, 5),
-(33, 4, 5),
-(34, 7, 4),
-(35, 7, 5),
-(42, 3, 4.5),
-(43, 3, 5),
-(48, 13, 5),
-(49, 13, 5),
-(50, 13, 5),
-(51, 3, 5),
-(52, 6, 5),
-(53, 7, 0),
-(54, 7, 5),
-(55, 7, 5),
-(56, 7, 5),
-(57, 7, 0),
-(58, 7, 5),
-(59, 7, 5),
-(60, 7, 5),
-(61, 7, 5),
-(62, 7, 5),
-(63, 7, 5),
-(64, 7, 5),
-(65, 7, 5),
-(66, 6, 2),
-(67, 7, 0),
-(68, 7, 5),
-(69, 7, 5),
-(70, 5, 0),
-(71, 6, 5),
-(72, 6, 4),
-(73, 6, 5),
-(74, 5, 5),
-(75, 5, 5),
-(76, 5, 5);
+(128, 3, 5),
+(129, 3, 5),
+(130, 4, 5),
+(131, 5, 4.5),
+(132, 5, 4.5),
+(133, 5, 5),
+(134, 6, 5),
+(135, 6, 4),
+(136, 7, 5),
+(137, 7, 4.5),
+(138, 7, 4),
+(139, 3, 5),
+(140, 3, 4.5),
+(141, 3, 4),
+(142, 3, 3.5),
+(143, 3, 4),
+(144, 3, 5),
+(145, 3, 3),
+(146, 3, 2),
+(147, 3, 5),
+(148, 3, 5),
+(149, 4, 4.5),
+(150, 4, 4.5),
+(151, 4, 5),
+(152, 4, 5),
+(153, 4, 5),
+(154, 4, 0),
+(155, 4, 5),
+(156, 4, 5),
+(157, 4, 5),
+(158, 4, 5),
+(159, 4, 5),
+(160, 4, 5),
+(161, 4, 5),
+(162, 4, 5),
+(163, 4, 5),
+(164, 4, 5),
+(165, 4, 5),
+(166, 4, 4.5),
+(167, 4, 5),
+(168, 4, 5),
+(169, 4, 5),
+(170, 6, 4),
+(171, 6, 4),
+(172, 6, 5),
+(173, 6, 5),
+(174, 6, 5),
+(175, 6, 5);
 
 -- --------------------------------------------------------
 
@@ -160,11 +160,11 @@ CREATE TABLE `rakbuku` (
 --
 
 INSERT INTO `rakbuku` (`id`, `nama`, `deskripsi`, `author`, `pdf_url`, `pdf_icon`, `peringkat`, `kategori`, `id_user`) VALUES
-(13, 'android-devsseloper-fundamentals-course-practicals-idn', 'Buku yg mengajarkan semua mengenai pembuatan aplikasi', 'Erlangga', 'pdf/Tutorial Aplikasi CRUD Android Studio & PHP MySQL.pdf', 'pdf-icons/0001.jpg', 4.5, 'Programming', 45),
-(17, 'Android Programming Language', 'Buku yg mengajarkan semua mengenai pembuatan aplikasi', 'Erlangga', 'pdf/11B - Android Studio - Connect Internet (Praktek).pdf', 'pdf-icons/pingu.jpg', 4.3, 'Programming', 45),
 (19, 'Android Developer', 'Buku yg mengajarkan semua mengenai pembuatan aplikasi', 'Erlangga', 'pdf/11B - Android Studio - Connect Internet (Praktek).pdf', 'pdf-icons/pingu.jpg', 4.6, 'Programming', 73),
 (20, 'android-developer-fundamentals-course-practicals-idn', 'Buku yg mengajarkan semua mengenai pembuatan aplikasi', 'Erlangga', 'pdf/android-developer-fundamentals-course-practicals-idn.pdf', 'pdf-icons/0001.jpg', 4.1, 'Programming', 45),
-(35, 'Android Programming Language', 'Buku yg mengajarkan semua mengenai pembuatan aplikasi', 'Erlangga', 'pdf/11B - Android Studio - Connect Internet (Praktek).pdf', 'pdf-icons/pingu.jpg', 4.3, 'Programming', 78);
+(35, 'Android Programming Language', 'Buku yg mengajarkan semua mengenai pembuatan aplikasi', 'Erlangga', 'pdf/11B - Android Studio - Connect Internet (Praktek).pdf', 'pdf-icons/pingu.jpg', 4.3, 'Programming', 78),
+(40, 'CRUD Android Retrofit2', 'Buku yg mengajarkan semua mengenai pembuatan aplikasi', 'Erlangga', 'pdf/Tutorial Aplikasi CRUD Android Studio & PHP MySQL.pdf', 'pdf-icons/pingu.jpg', 4.4, 'Programming', 85),
+(43, 'Android Developer', 'Buku yg mengajarkan semua mengenai pembuatan aplikasi', 'Erlangga', 'pdf/11B - Android Studio - Connect Internet (Praktek).pdf', 'pdf-icons/pingu.jpg', 4.7, 'Programming', 45);
 
 -- --------------------------------------------------------
 
@@ -187,12 +187,38 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`id`, `nama`, `username`, `email`, `en_password`, `salt`, `image`) VALUES
-(45, 'as', 'sf', 'juliandwi74@gmail.com', 'aWr4v090rgUgs27ChrI502dbzFUyNTEwYzM5YTFi', '2510c39a1b', 'http://192.168.43.236/perpus_db/uploads/45.png'),
+(45, 'letnan', 'letnan', 'juliandwi74@gmail.com', 'gTJbn9ws9cARaKXMt1cMkNe4YKM4N2YzYWE0ODZl', '87f3aa486e', 'http://192.168.43.236/perpus_db/uploads/45.png'),
 (49, 'aaa', 'Zss', 'juliandwiq74@gmail.com', 'L+FQwSWlyzXumCwaFIIhk8EPLkRiMWU2YjYyOGE5', 'b1e6b628a9', 'http://192.168.43.236/perpus_db/uploads/49.png'),
 (73, 'Julian', 'Killa', 'juliandwiputra6@gmail.com', 'SMd5TpOQwX1u/hXOM5+eZC/xeothNjczZThhN2Ez', 'a673e8a7a3', ''),
 (75, 'Julian', 'qqqqq', 'juliandwip87@gmail.com', 'gxtVWgmzZ9lkY4n3kRqKEC/qxVo5YzgxOGYxYmQ5', '9c818f1bd9', ''),
 (76, 'Julian', 'Zirra', 'juliandwi741@gmail.com', 'B3vd1YFCbR7YvO2FD+dNrJfsT2sxNWU1MTE2NjE2', '15e5116616', 'http://192.168.43.236/perpus_db/uploads/76.png'),
-(78, 'Julian', 'Zit2ta', 'user@gmail.com', 'eyGEismvNb4N2y1rn8OFGTTbhCA=', '76b5ff04ac', 'http://192.168.43.236/perpus_db/uploads/78.png');
+(78, 'Julian', 'Zit2ta', 'user@gmail.com', 'eyGEismvNb4N2y1rn8OFGTTbhCA=', '76b5ff04ac', 'http://192.168.43.236/perpus_db/uploads/78.png'),
+(85, 'bana', 'haha', 'haha@gmail.com', '0WBIglztFfMeVuhH4Yxix7e4zCo2MjhmMTA4Mjdl', '628f10827e', 'http://192.168.43.143/perpus_db/uploads/85.png'),
+(86, 'happha', 'lololo', 'faruqalll@gmail.com', 'STqRiHUvwFD1MBsj63yh9szh60hmNTVlZTJmMWQw', 'f55ee2f1d0', 'http://192.168.43.143/perpus_db/uploads/86.png'),
+(87, 'farras', 'ras', 'jul@gmail.com', 'fGU2pCTDFpCRlRAaKwhtmqzLpwo1MTZlMWIwY2Vh', '516e1b0cea', ''),
+(88, 'julian', 'julian', 'juliandwi@gmail.com', 'Ss7+Pk9zJoOmQmlG51NYt4JA/VUzZjQxNDhlOWYx', '3f4148e9f1', '');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `test_upload`
+--
+
+CREATE TABLE `test_upload` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(300) NOT NULL,
+  `type` varchar(300) NOT NULL,
+  `image` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `test_upload`
+--
+
+INSERT INTO `test_upload` (`id`, `nama`, `type`, `image`) VALUES
+(1, 'pexels-photo-1671324.jpeg', 'image/jpeg', ''),
+(2, 'rich-but-always-broke-obooko.pdf', 'application/pdf', ''),
+(3, 'http://192.168.43.143/perpus_db/pdf/rich-but-always-broke-obooko.pdf', 'application/pdf', '');
 
 --
 -- Indexes for dumped tables
@@ -231,6 +257,12 @@ ALTER TABLE `tbl_user`
   ADD UNIQUE KEY `email` (`email`);
 
 --
+-- Indeks untuk tabel `test_upload`
+--
+ALTER TABLE `test_upload`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
@@ -238,7 +270,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT untuk tabel `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `kategori_buku`
@@ -250,19 +282,25 @@ ALTER TABLE `kategori_buku`
 -- AUTO_INCREMENT untuk tabel `peringkat`
 --
 ALTER TABLE `peringkat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=176;
 
 --
 -- AUTO_INCREMENT untuk tabel `rakbuku`
 --
 ALTER TABLE `rakbuku`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+
+--
+-- AUTO_INCREMENT untuk tabel `test_upload`
+--
+ALTER TABLE `test_upload`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

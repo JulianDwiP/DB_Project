@@ -103,7 +103,7 @@ if(isset($_POST['btn'])){
     $sql = "INSERT INTO `buku` (`id`, `nama`, `deskripsi`, `author`, `pdf_icon`, `pdf_url`, `peringkat`, `kategori`, `pengunjung`)
     VALUES ('', '$nama', '$deskripsi', '$author','$target_file_img', '$target_file_pdf', $peringkat , '$kategori', 0)"; 
     if(mysqli_query($con,$sql)){
-        echo "Berhasil Memasukan ke table lur";
+        echo "Berhasil Memasukan ke table";
     }else{
         echo mysqli_error($con);
     }
